@@ -2,6 +2,7 @@ import { MainNav } from "~/components/main-nav";
 import { Button } from "~/components/ui/button";
 import type { MetaFunction } from "@remix-run/node";
 import ContactForm from "~/components/contact-form";
+import { EnvelopeClosedIcon,HomeIcon ,ChatBubbleIcon} from "@radix-ui/react-icons";
 
 export const meta: MetaFunction = () => {
     return [
@@ -22,15 +23,16 @@ export default function Index() {
         </p>
         <div className="mt-5">
           <div className="flex items-center mt-2 space-x-2 text-gray-600 dark:text-white">
-            {/* <Icon className="text-gray-400 w-4 h-4" name="uil:map-marker" /> */}
+            <HomeIcon/>
             <span>Your Address Goes Here</span>
           </div>
           <div className="flex items-center mt-2 space-x-2 text-gray-600 dark:text-white">
-            {/* <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" /> */}
+            <EnvelopeClosedIcon/>
             <a href="mailto:laarichabdo@gmail.com">laarichabdo@gmail.com</a>
           </div>
           <div className="flex items-center mt-2 space-x-2 text-gray-600 dark:text-white">
             {/* <Icon class="text-gray-400 w-4 h-4" name="uil:phone" /> */}
+            <ChatBubbleIcon/>
             <a href="tel:+1234567890">+212 614292371</a>
           </div>
         </div>
