@@ -1,64 +1,53 @@
 
 import { cn } from "~/lib/utils"
 import { Link } from "@remix-run/react"
-import { Search } from "./search"
 import { ModeToggle } from "./mode-toggle"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
 
 const links = [
   {
-    path:"/blog",
-    label:"Blog",
+    path: "/",
+    label: "About",
   },
   {
-    path:"/contact",
-    label:"Contact",
+    path: "/blog",
+    label: "Blog",
   },
   {
-    path:"/about",
-    label:"About",
-  }
-]
+    path: "/contact",
+    label: "Contact",
+  },
 
-import { HamburgerMenuIcon } from '@radix-ui/react-icons'
-import { CommandMenu } from "./command-menu"
+]
+import { Menu } from 'lucide-react'
+import CustomLink from "./custome-link"
+import { useState } from "react"
+import { Button } from "./ui/button"
 export function MainNav({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
   return (
-  <div>
+    <div>
       <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6 p-4 w-full dark:bg-black dark:text-white   container max-w-7xl ", className)}
-      {...props}
-    >
-      <Logo />
-      {links.map((link, index) => (
-        <Link
-          key={index} 
-          to={link.path} 
-          className="text-sm font-medium hidden md:block text-muted-foreground transition-colors hover:text-primary"
-        >
-          {link.label} {/* Assuming link object has a 'label' property */}
-        </Link>
-      ))}
-     
-
-      <div className=" flex items-center space-x-2" style={{ marginLeft: "auto" }}>
-        <CommandMenu/>
-        <NavMenu/>
-        <ModeToggle />
-      </div>
-    </nav>
-    <hr/>
-  </div>
+        className={cn("flex items-center space-x-4 lg:space-x-6  container-lg ", className)}
+        {...props}
+      >
+        <Logo />
+        {links.map((link, index) => (
+          <CustomLink className="hidden md:block" to={link.path} label={link.label} key={index} />
+        ))}
+        <div className=" flex items-center space-x-2" style={{ marginLeft: "auto" }}>
+          <NavMenu />
+          <ModeToggle />
+        </div>
+      </nav>
+    </div>
   )
 }
 
@@ -71,31 +60,25 @@ function Logo() {
 }
 
 function NavMenu() {
+  const [open, setOpen] = useState(false);
   return (
-  <DropdownMenu>
-    <DropdownMenuTrigger>
-      <HamburgerMenuIcon
-      className="h-[1.2rem] w-[3rem] md:w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 md:hidden"
-    /></DropdownMenuTrigger>
-    <DropdownMenuContent>
-      <DropdownMenuLabel>My Account</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      {links.map((link, index) => (
-        <DropdownMenuItem key={index}>
-          <Link
-            key={index}
-            to={link.path}
-            className="text-sm font-medium  md:hidden text-muted-foreground transition-colors hover:text-primary"
-          >
-            {link.label} 
-          </Link>
-        </DropdownMenuItem>
-      ))}
-      {/* <DropdownMenuItem>Profile</DropdownMenuItem> */}
-      {/* <DropdownMenuItem>Billing</DropdownMenuItem> */}
-      {/* <DropdownMenuItem>Team</DropdownMenuItem> */}
-      {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
-    </DropdownMenuContent>
-  </DropdownMenu>)
+    <div className="md:hidden">
+      <DropdownMenu open={open} onOpenChange={() => setOpen(false)} >
+        <DropdownMenuTrigger onClick={() => setOpen(!open)}>
+          <Button variant="ghost" className="rounded-full" size="icon">
+
+            <Menu className="h-[1.2rem] w-[1.2rem] transition-all" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          {links.map((link, index) => (
+            <DropdownMenuItem key={index} onClick={() => setOpen(false)}>
+              <CustomLink className="md:hidden" to={link.path} label={link.label} key={index} />
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  )
 }
 
