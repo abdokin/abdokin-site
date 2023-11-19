@@ -25,6 +25,7 @@ export default function AppWithProviders() {
 }
 import styles from "./tailwind.css";
 import { MainNav } from "./components/main-nav"
+import Footer from "./components/main-footer"
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
@@ -42,9 +43,10 @@ export function App() {
         <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         <Links />
       </head>
-      <body className="dark:bg-black dark:text-white">
+      <body className="dark:bg-baground dark:text-white">
       <MainNav className="" />
         <Outlet />
+        <Footer/>
         <ScrollRestoration/>
         <Scripts />
         <LiveReload />
