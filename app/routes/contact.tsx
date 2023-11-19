@@ -10,10 +10,10 @@ export const meta: MetaFunction = () => {
         { name: "description", content: "Welcome to my website!" },
       ];
 };
-
+import config from '../config/site'
 export default function Index() {
   return (
-    <div  className="container max-w-7xl mt-4 "> 
+    <div className="container-lg ">
      
     <div className="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
       <div>
@@ -22,18 +22,17 @@ export default function Index() {
           If you have any inquiries or just want to say hello, don't hesitate to contact me using the form below or through email or phone.
         </p>
         <div className="mt-5">
-          <div className="flex items-center mt-2 space-x-2 text-gray-600 dark:text-white">
-            <HomeIcon/>
-            <span>Your Address Goes Here</span>
-          </div>
+          
           <div className="flex items-center mt-2 space-x-2 text-gray-600 dark:text-white">
             <EnvelopeClosedIcon/>
-            <a href="mailto:laarichabdo@gmail.com">laarichabdo@gmail.com</a>
+            <a href="mailto:laarichabdo@gmail.com">{config.contactEmail}</a>
           </div>
           <div className="flex items-center mt-2 space-x-2 text-gray-600 dark:text-white">
-            {/* <Icon class="text-gray-400 w-4 h-4" name="uil:phone" /> */}
             <ChatBubbleIcon/>
-            <a href="tel:+1234567890">+212 614292371</a>
+            <a href={`tel:${config.phone}`}>{config.phone}</a>
+          </div>
+          <div className="flex items-center mt-2 space-x-2 text-gray-600 dark:text-white">
+            <span className="text-sm">{config.address}</span>
           </div>
         </div>
       </div>
