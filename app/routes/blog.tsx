@@ -11,10 +11,8 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div  className="container max-w-7xl mt-4"> 
-      <h1>Blog  Page</h1>
-      <Button>Click me</Button>
-
+    <div  className="container-lg"> 
+      <h1 className="text-4xl font-bold">Articles</h1>
     </div>
   );
 }
