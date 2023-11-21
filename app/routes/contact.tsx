@@ -14,10 +14,13 @@ import config from '../config/site'
 export default function Index() {
   return (
     <div className="container-lg ">
+        <img src="/casablanca-2.jpeg" />
+
      
     <div className="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
       <div>
-        <h2 className="font-medium text-2xl text-gray-800  dark:text-white font-bold">Contact Me</h2>
+
+        <h2 className="font-medium text-2xl md:text-3xl text-gray-800  dark:text-white font-bold">Contact Me</h2>
         <p className="text-lg leading-relaxed text-slate-500 mt-3 dark:text-white">
           If you have any inquiries or just want to say hello, don't hesitate to contact me using the form below or through email or phone.
         </p>
