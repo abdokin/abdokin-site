@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { MainNav } from "~/components/main-nav";
-import { Button } from "~/components/ui/button";
 import type { MetaFunction } from "@remix-run/node";
 import HireMe from "~/components/hire-me-card";
 import config from '../config/site';
